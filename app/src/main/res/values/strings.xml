@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">반려동물 안구 자가진단</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

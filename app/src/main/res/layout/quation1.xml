@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    android:orientation="vertical"
+    android:background="@drawable/radius">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Q. 가장 조심해야 하는 강아지 안구 질환은 무엇인가요?"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="30dp"
+        android:textSize="18dp"
+        android:fontFamily="@font/gmarket_sans_ttf_medium"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="A. 강아지의 3대 안과질환은 각막궤양·백내장·녹내장입니다."
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="30dp"
+        android:textSize="15dp"
+        android:fontFamily="@font/gmarket_sans_ttf_light"/>
+</LinearLayout>

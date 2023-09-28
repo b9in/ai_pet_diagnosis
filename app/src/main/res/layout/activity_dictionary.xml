@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/closeBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_back"
+            android:background="#00ff0000"
+            />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="질환명"
+            android:fontFamily="@font/gmarket_sans_ttf_medium"
+            android:textAlignment="center"
+            android:textSize="30dp"
+            android:layout_marginBottom="20dp"/>
+
+        <TextView
+            android:id="@+id/subtitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="질환명"
+            android:fontFamily="@font/gmarket_sans_ttf_light"
+            android:textAlignment="center"
+            android:textSize="15dp"
+            android:layout_marginBottom="50dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="원인"
+            android:fontFamily="@font/gmarket_sans_ttf_bold"
+            android:textSize="20dp"
+            android:layout_marginBottom="30dp"
+            android:paddingLeft="50dp"/>
+
+        <LinearLayout
+            android:id="@+id/parent_cause"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="증상"
+            android:fontFamily="@font/gmarket_sans_ttf_bold"
+            android:textSize="20dp"
+            android:layout_marginBottom="30dp"
+            android:paddingLeft="50dp"/>
+
+
+        <LinearLayout
+            android:id="@+id/parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+</ScrollView>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 그림자를 추가할 아래의 아이템을 정의합니다. -->
+    <item android:drawable="@drawable/shadow" />
+
+    <!-- 배경은 여전히 버튼의 모서리와 그라데이션을 정의합니다. -->
+    <item android:drawable="@drawable/radius" />
+</layer-list>

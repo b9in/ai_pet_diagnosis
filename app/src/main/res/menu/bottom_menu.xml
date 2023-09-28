@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/home"
+        android:enabled="true"
+        android:icon="@drawable/ic_home_foreground"
+        android:title="홈"
+        app:showAsAction="always"
+        />
+
+    <item
+        android:id="@+id/map"
+        android:enabled="true"
+        android:icon="@drawable/ic_map_foreground"
+        android:title="병원"
+        app:showAsAction="always"
+        />
+
+    <item
+        android:id="@+id/dictionary"
+        android:enabled="true"
+        android:icon="@drawable/ic_dictionary_foreground"
+        android:title="사전"
+        app:showAsAction="always"
+        />
+</menu>

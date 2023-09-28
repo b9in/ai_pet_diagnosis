@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DictionaryFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="안구 질병 사전"
+            android:textSize="22dp"
+            android:layout_marginTop="20dp"
+            android:textAlignment="center"
+            android:fontFamily="@font/gmarket_sans_ttf_medium"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2px"
+            android:background="#666"/>
+        
+        <ListView
+            android:id="@+id/listView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
+    </LinearLayout>
+
+
+</FrameLayout>

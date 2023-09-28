@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".HomeFragment"
+    android:orientation="vertical">
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+android:orientation="vertical">
+
+
+<Button
+    android:id="@+id/closeBtn"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:drawableLeft="@drawable/ic_back"
+    android:background="#00ff0000"
+    />
+
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="PROFILE"
+    android:textSize="20dp"
+    android:fontFamily="@font/gmarket_sans_ttf_bold"
+    android:textAlignment="center"
+    android:layout_marginBottom="40dp"/>
+
+<de.hdodenhof.circleimageview.CircleImageView
+    android:id="@+id/circle_iv"
+    android:layout_width="150dp"
+    android:layout_height="150dp"
+    android:layout_gravity="center"
+    android:background="@android:color/transparent"
+    app:civ_border_overlay="true"
+    app:civ_border_width="0dp"
+    app:civ_border_color="#666"
+    android:src="@drawable/test_img"
+    android:elevation="20dp"
+    />
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_marginTop="50dp"
+    android:layout_marginBottom="40dp">
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="반려동물 이름"
+        android:textSize="20dp"
+        android:fontFamily="@font/gmarket_sans_ttf_light"
+        android:textAlignment="center" />
+
+    <EditText
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_marginHorizontal="20dp"
+        android:textSize="20dp"
+        android:fontFamily="@font/gmarket_sans_ttf_light"
+        android:textAlignment="center"/>
+</LinearLayout>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_marginBottom="40dp">
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="반려동물 종류"
+        android:textSize="20dp"
+        android:fontFamily="@font/gmarket_sans_ttf_light"
+        android:textAlignment="center" />
+
+    <EditText
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_marginHorizontal="20dp"
+        android:textSize="20dp"
+        android:fontFamily="@font/gmarket_sans_ttf_light"
+        android:textAlignment="center"/>
+</LinearLayout>
+
+<Button
+    android:id="@+id/directBtn"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text=" UPDATE "
+    android:textColor="@color/white"
+    android:textSize="15dp"
+    android:fontFamily="@font/gmarket_sans_ttf_medium"
+    android:layout_marginTop="50px"
+    android:layout_marginBottom="100px"
+    android:layout_marginLeft="40dp"
+    android:layout_marginRight="40dp"
+    android:background="@drawable/radius_color"
+    android:elevation="20dp"
+    />
+
+
+</LinearLayout>
+
+</ScrollView>
+
