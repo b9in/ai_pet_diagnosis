@@ -164,16 +164,13 @@ public class DiagnosisActivity extends AppCompatActivity {
 
     // 이미지 플라스크로 전송
     private void sendImage(Bitmap bitmap) {
-        /*
-
-        // 비트맵 이미지를 byte로 변환 -> base64형태로 변환
+        
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
         byte[] imageBytes = baos.toByteArray();
         imageString = Base64.encodeToString(imageBytes, Base64.DEFAULT);
 
-        // base64형태로 변환된 이미지 데이터를 플라스크 서버로 전송
-        String flask_url = "http://3.34.233.17:5000/get";
+        String flask_url = "";
         StringRequest request = new StringRequest(Request.Method.POST, flask_url,
                 new Response.Listener<String>() {
                     @Override
@@ -207,7 +204,7 @@ public class DiagnosisActivity extends AppCompatActivity {
         queue.add(request);
 
 
-         */
+
         Intent intent1 = new Intent(DiagnosisActivity.this, ResultActivity.class);
         //intent1.putExtra("key", value);
         startActivity(intent1);
