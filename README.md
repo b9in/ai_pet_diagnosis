@@ -35,8 +35,22 @@ AI 반려동물 안구 자가진단 안드로이드 어플리케이션
 
 #### 맵 화면
 
-<img src="https://github.com/b9in/ai_pet_diagnosis/assets/128045612/2a4b4067-4c0c-4dbd-94a8-c0fad1b1c3bf" width="300" height="600"/>
+<img src="https://github.com/b9in/ai_pet_diagnosis/assets/128045612/0e13e184-1920-4b89-acd5-65048aa7882c" width="300" height="600"/>
+
+맵 화면에서는 Google Maps API를 통해 현재 위치를 불러오고 현재 위치 반경 1500M의 근처 동물 병원들을 Google Places API를 이용해 표시합니다. 
 
 #### 사전 화면
 
+<img src="https://github.com/b9in/ai_pet_diagnosis/assets/128045612/91f5b296-ad81-45c3-a7ba-23913366a12a" width="300" height="600"/>
+
+사전 화면에서는 반려동물 안구 질환을 ListView로 표시합니다.
+
+각 질환 항목을 선택하면 세부 정보를 볼 수 있는 페이지가 표시됩니다.
+
+<img src="https://github.com/b9in/ai_pet_diagnosis/assets/128045612/0b99db5e-2c08-4048-9f26-5e2d8b5cbac4" width="300" height="600"/>
+
+항목 페이지에서는 질환의 원인과 증상을 나타냅니다.
+
 ## 느낀 점
+
+어플리케이션 개발에 앞서 요구사항을 정의하고 어플리케이션 설계를 하여 훨씬 수월하게 개발할 수 있어 요구사항 정의와 설계의 중요성을 깨달았다. 안드로이드 UI를 설계하면서 UX의 중요성을 느끼고 편리한 화면 전환을 위해 NavigationBarView를 활용했다. 지도를 표시하는 부분에서 kakao maps api와 google places api 중에 어떤 것을 써야할 지 고민했는데 kakao maps api는 db에 동물병원 공공데이터를 내장하여 써야한다는 점 때문에 google maps, places api를 채택했다. 이번 팀 프로젝트를 통해 백엔드와 협업을 하면서 소통이 중요하다는 것을 깨달았다. 또, 백엔드에 대해서도 지식을 잘 갖춰놔야겠다고 생각했다.
