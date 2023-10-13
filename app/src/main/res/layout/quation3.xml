@@ -8,7 +8,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Q. 어쩌구저쩌구"
+        android:text="Q. 개가 매일 눈을 뜨고 잡니다."
         android:layout_marginHorizontal="30dp"
         android:layout_marginTop="30dp"
         android:textSize="18dp"
@@ -17,7 +17,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="A. 어쩌구저쩌구"
+        android:text="A. 눈을 뜨고 잔다고 해서 문제가 되진 않지만 흰자가 충혈되어 있는 것처럼 보인다면 병원에 내원하여 진료받는 것을 권합니다."
         android:layout_marginHorizontal="30dp"
         android:layout_marginTop="30dp"
         android:textSize="15dp"

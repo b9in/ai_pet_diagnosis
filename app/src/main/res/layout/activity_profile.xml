@@ -32,6 +32,7 @@ android:orientation="vertical">
     android:layout_marginBottom="40dp"/>
 
 <de.hdodenhof.circleimageview.CircleImageView
+    android:visibility="gone"
     android:id="@+id/circle_iv"
     android:layout_width="150dp"
     android:layout_height="150dp"
@@ -41,6 +42,15 @@ android:orientation="vertical">
     app:civ_border_width="0dp"
     app:civ_border_color="#666"
     android:src="@drawable/test_img"
+    android:elevation="20dp"
+    />
+<Button
+    android:visibility="visible"
+    android:id="@+id/profileImageBtn"
+    android:layout_width="150dp"
+    android:layout_height="150dp"
+    android:layout_gravity="center"
+    android:background="@drawable/round"
     android:elevation="20dp"
     />
 
@@ -61,6 +71,7 @@ android:orientation="vertical">
         android:textAlignment="center" />
 
     <EditText
+        android:id="@+id/name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
@@ -86,6 +97,7 @@ android:orientation="vertical">
         android:textAlignment="center" />
 
     <EditText
+        android:id="@+id/species"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
@@ -96,7 +108,7 @@ android:orientation="vertical">
 </LinearLayout>
 
 <Button
-    android:id="@+id/directBtn"
+    android:id="@+id/updateBtn"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:text=" UPDATE "

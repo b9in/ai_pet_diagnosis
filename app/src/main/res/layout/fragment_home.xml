@@ -52,6 +52,7 @@
             />
 
         <TextView
+            android:id="@+id/mainName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="누렁이"
@@ -61,6 +62,7 @@
             android:layout_marginBottom="25dp"/>
 
         <TextView
+            android:id="@+id/mainSpecies"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="KOKONI"
