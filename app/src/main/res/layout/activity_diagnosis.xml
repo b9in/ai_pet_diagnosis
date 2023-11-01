@@ -36,7 +36,6 @@
             android:layout_margin="30dp"
             android:background="@drawable/radius"
             android:layout_marginBottom="80dp"
-            android:scaleType="centerCrop"
             android:adjustViewBounds="true"
             />
 
