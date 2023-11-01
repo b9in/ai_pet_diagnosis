@@ -31,6 +31,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONObject;
+
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.HashMap;
@@ -48,6 +50,7 @@ public class DiagnosisActivity extends AppCompatActivity {
     private String imageString;
     private ProgressDialog progress;
     private RequestQueue queue;
+    String responseStr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -148,7 +151,7 @@ public class DiagnosisActivity extends AppCompatActivity {
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
             Uri selectedImageUri = data.getData();
             try {
-                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), selectedImageUri);
+                bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), selectedImageUri);
                 // 불러온 사진을 사용하는 코드 작성
                 iv_photo.setImageBitmap(bitmap);
                 //sendImage(bitmap);
@@ -164,7 +167,7 @@ public class DiagnosisActivity extends AppCompatActivity {
 
     // 이미지 플라스크로 전송
     private void sendImage(Bitmap bitmap) {
-        
+
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
         byte[] imageBytes = baos.toByteArray();
@@ -177,9 +180,23 @@ public class DiagnosisActivity extends AppCompatActivity {
                     public void onResponse(String response) {
                         progress = new ProgressDialog(DiagnosisActivity.this);
                         progress.dismiss();
-                        if (response.equals("true")) {
-                            Toast.makeText(DiagnosisActivity.this, "Uploaded Successful", Toast.LENGTH_LONG).show();
-                        } else {
+                        try {
+                            //Toast.makeText(DiagnosisActivity.this, "Uploaded Successful", Toast.LENGTH_LONG).show();
+                            responseStr = response;
+
+                            JSONObject jsonObject = new JSONObject(responseStr);
+                            // JSON 데이터를 파싱하고 특정 키에 따라 변수에 저장
+                            String name = jsonObject.getString("code"); // 질병이름(숫자로나옴)
+                            String img = jsonObject.getString("img"); //이미지
+                            String acc = jsonObject.getString("acc"); //정확도
+
+                            Intent intent1 = new Intent(DiagnosisActivity.this, ResultActivity.class);
+                            intent1.putExtra("name", name);
+                            intent1.putExtra("img", img);
+                            intent1.putExtra("acc", acc);
+                            startActivity(intent1);
+                            finish();
+                        } catch (Exception e){
                             Toast.makeText(DiagnosisActivity.this, "Some error occurred!", Toast.LENGTH_LONG).show();
                         }
                     }
@@ -201,13 +218,19 @@ public class DiagnosisActivity extends AppCompatActivity {
             }
         };
 
+        request.setRetryPolicy(new com.android.volley.DefaultRetryPolicy(
+
+                20000 ,
+
+                com.android.volley.DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+
+                com.android.volley.DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+
         queue.add(request);
 
 
 
-        Intent intent1 = new Intent(DiagnosisActivity.this, ResultActivity.class);
-        //intent1.putExtra("key", value);
-        startActivity(intent1);
-        finish();
+
     }
+
 }

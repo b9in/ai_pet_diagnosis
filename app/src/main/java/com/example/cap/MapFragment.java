@@ -217,7 +217,7 @@ public class MapFragment extends Fragment implements  OnMapReadyCallback, Locati
 
                         new NRPlaces.Builder()
                                 .listener(MapFragment.this)
-                                .key("")
+                                .key("AIzaSyAFx8aOkW_OSNtU3sfOd5NR6vkBcdtufjw")
                                 .latlng(currentLatitude, currentLongitude)
                                 .radius(1500)
                                 .type(PlaceType.VETERINARY_CARE)
@@ -249,7 +249,6 @@ public class MapFragment extends Fragment implements  OnMapReadyCallback, Locati
                     markerOptions.snippet(place.getVicinity());
                     Marker item = mMap.addMarker(markerOptions);
                     previous_marker.add(item);
-
                 }
 
                 HashSet<Marker> hashSet = new HashSet<Marker>();

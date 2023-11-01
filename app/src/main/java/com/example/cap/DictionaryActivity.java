@@ -133,10 +133,12 @@ public class DictionaryActivity extends AppCompatActivity {
                 title_tv.setText("안검염");
                 subtitle.setText("Blepharitis");
                 break;
+                /*
             case "안검종양":
                 CreateImageView("안검종양의 설명",1);
                 title_tv.setText("안검종양");
                 break;
+                */
             case "안검 내반증":
                 CreateImageView("유전에 의한 경우가 대부분이에요",1);
                 CreateImageView("만성 각막염이나 결막염의 심한 통증으로 눈꺼풀이 안쪽으로 휘게 되어 안검 내반이 발생될 수 있어요",1);
@@ -155,6 +157,7 @@ public class DictionaryActivity extends AppCompatActivity {
                 title_tv.setText("유루증");
                 subtitle.setText("Epiphora");
                 break;
+                /*
             case "색소침착성각막염":
                 CreateImageView("색소침착성각막염의 설명",1);
                 title_tv.setText("색소침착성각막염");
@@ -163,6 +166,7 @@ public class DictionaryActivity extends AppCompatActivity {
                 CreateImageView("핵경화의 설명",1);
                 title_tv.setText("핵경화");
                 break;
+                 */
             case "결막염":
                 CreateImageView("눈물분비샘 세포가 선천적으로 이상이 있을 경우 생겨요",1);
                 CreateImageView("항생제 장기간 노출 시 생겨요",1);
@@ -174,10 +178,13 @@ public class DictionaryActivity extends AppCompatActivity {
                 title_tv.setText("결막염");
                 subtitle.setText("Conjunctivitis");
                 break;
+                /*
             case "비궤양성 각막질환":
                 CreateImageView("비궤양성 각막질환의 설명",1);
                 title_tv.setText("비궤양성 각막질환");
                 break;
+
+                 */
             case "백내장":
                 CreateImageView("노화 시 발생할 수 있어요",1);
                 CreateImageView("당뇨병에 걸린 강아지는 높은 혈당 수치로 인해 백내장에 걸릴 위험이 있어요",1);
@@ -187,10 +194,13 @@ public class DictionaryActivity extends AppCompatActivity {
                 title_tv.setText("백내장");
                 subtitle.setText("Cataract");;
                 break;
+                /*
             case "유리체변성":
                 CreateImageView("유리체변성의 설명",1);
                 title_tv.setText("유리체변성");
                 break;
+
+                 */
         }
 
     }

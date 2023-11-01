@@ -54,15 +54,15 @@ public class DictionaryFragment extends Fragment {
 
         List<String> list = new ArrayList<>();
         list.add("안검염");
-        list.add("안검종양");
+        //list.add("안검종양");
         list.add("안검 내반증");
         list.add("유루증");
-        list.add("색소침착성각막염");
-        list.add("핵경화");
+        //list.add("색소침착성각막염");
+        //list.add("핵경화");
         list.add("결막염");
-        list.add("비궤양성 각막질환");
+        //list.add("비궤양성 각막질환");
         list.add("백내장");
-        list.add("유리체변성");
+        //list.add("유리체변성");
 
         ctx=getContext();
 
