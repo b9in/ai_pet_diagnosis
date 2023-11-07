@@ -71,7 +71,7 @@ public class ResultActivity extends AppCompatActivity {
         if (bitmap != null) {
             imgR.setImageBitmap(bitmap);
             txtTitle.setText(nameValue);
-            txtContent.setText(accValue);
+            txtContent.setText("정확도 : " + accValue);
 
         } else {
             // 변환에 실패한 경우 처리할 코드

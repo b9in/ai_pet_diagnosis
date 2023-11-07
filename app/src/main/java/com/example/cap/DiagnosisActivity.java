@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Base64;
@@ -43,6 +44,7 @@ public class DiagnosisActivity extends AppCompatActivity {
     Bitmap bitmap;
     ImageView iv_photo;
     Button sendBtn, closeBtn;
+    private ProgressDialog progressDialog;
 
     int PICK_IMAGE_REQUEST = 100;
 
@@ -128,10 +130,7 @@ public class DiagnosisActivity extends AppCompatActivity {
                         bitmap = (Bitmap) extras.get("data");
 
                         iv_photo.setImageBitmap(bitmap);
-                        //sendImage(bitmap);
-                        //Intent intent1 = new Intent(DiagnosisActivity.this, ResultActivity.class);
-                        //intent1.putExtra("key", value);
-                        //startActivity(intent1);
+
                     }
                 }
             });
@@ -152,12 +151,9 @@ public class DiagnosisActivity extends AppCompatActivity {
             Uri selectedImageUri = data.getData();
             try {
                 bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), selectedImageUri);
-                // 불러온 사진을 사용하는 코드 작성
+
                 iv_photo.setImageBitmap(bitmap);
-                //sendImage(bitmap);
-                //Intent intent1 = new Intent(DiagnosisActivity.this, ResultActivity.class);
-                //intent1.putExtra("key", value);
-                //startActivity(intent1);
+
 
             } catch (IOException e) {
                 e.printStackTrace();
@@ -168,18 +164,25 @@ public class DiagnosisActivity extends AppCompatActivity {
     // 이미지 플라스크로 전송
     private void sendImage(Bitmap bitmap) {
 
+        progressDialog = new ProgressDialog(DiagnosisActivity.this);
+        progressDialog.setMessage("Loading..."); // ProgressDialog에 표시될 메시지 설정
+        progressDialog.setCancelable(false); // ProgressDialog를 취소할 수 없도록 설정
+        progressDialog.show(); // ProgressDialog 표시
+
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
         byte[] imageBytes = baos.toByteArray();
         imageString = Base64.encodeToString(imageBytes, Base64.DEFAULT);
 
-        String flask_url = "";
+        String flask_url = BuildConfig.FLASK_URL;
+
         StringRequest request = new StringRequest(Request.Method.POST, flask_url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         progress = new ProgressDialog(DiagnosisActivity.this);
                         progress.dismiss();
+                        progressDialog.dismiss();
                         try {
                             //Toast.makeText(DiagnosisActivity.this, "Uploaded Successful", Toast.LENGTH_LONG).show();
                             responseStr = response;
@@ -206,6 +209,7 @@ public class DiagnosisActivity extends AppCompatActivity {
                     public void onErrorResponse(VolleyError error) {
                         progress = new ProgressDialog(DiagnosisActivity.this);
                         progress.dismiss();
+                        progressDialog.dismiss();
                         Toast.makeText(DiagnosisActivity.this, "Some error occurred -> " + error, Toast.LENGTH_LONG).show();
                     }
                 }) {
@@ -227,9 +231,6 @@ public class DiagnosisActivity extends AppCompatActivity {
                 com.android.volley.DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
 
         queue.add(request);
-
-
-
 
     }
 

@@ -4,6 +4,9 @@ plugins {
 
 }
 
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
 android {
     namespace 'com.example.cap'
     compileSdk 33
@@ -16,6 +19,8 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField "String", "FLASK_URL", properties['FLASK_URL']
     }
 
     buildTypes {
