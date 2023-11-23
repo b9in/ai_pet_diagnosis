@@ -32,6 +32,7 @@ profile 버튼을 누르면 홈 화면의 반려동물 이미지와 이름, 종(
 volley 라이브러리를 사용하여 서버에 FormData형식으로 bitmap을 전송합니다.
 
 <img width="172" alt="스크린샷 2023-11-23 114810" src="https://github.com/b9in/ai_pet_diagnosis/assets/128045612/9f675017-7f32-4f37-83a2-f707016674d4">
+<img width="172" alt="스크린샷 2023-11-23 125700" src="https://github.com/b9in/ai_pet_diagnosis/assets/128045612/15a00c6a-da26-45b2-b732-2f1a07db86b6">
 
 판별을 끝낸 인공지능이 결과 값을 안드로이드에 전송하여 결과를 표시합니다.
 
