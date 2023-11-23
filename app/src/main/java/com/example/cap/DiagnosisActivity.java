@@ -5,11 +5,14 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Base64;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -25,6 +28,7 @@ import androidx.core.content.ContextCompat;
 import androidx.viewpager.widget.ViewPager;
 
 import com.android.volley.AuthFailureError;
+import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -35,7 +39,10 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -161,8 +168,16 @@ public class DiagnosisActivity extends AppCompatActivity {
         }
     }
 
+    public byte[] getFileDataFromDrawable(Bitmap bitmap) {
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 80, byteArrayOutputStream);
+        return byteArrayOutputStream.toByteArray();
+    }
+
     // 이미지 플라스크로 전송
     private void sendImage(Bitmap bitmap) {
+
+        File imageFile = bitmapToFile(bitmap);
 
         progressDialog = new ProgressDialog(DiagnosisActivity.this);
         progressDialog.setMessage("Loading..."); // ProgressDialog에 표시될 메시지 설정
@@ -176,33 +191,48 @@ public class DiagnosisActivity extends AppCompatActivity {
 
         String flask_url = BuildConfig.FLASK_URL;
 
-        StringRequest request = new StringRequest(Request.Method.POST, flask_url,
-                new Response.Listener<String>() {
+        File img = imageFile;
+        VolleyMultipartRequest request = new VolleyMultipartRequest(Request.Method.POST, flask_url,
+                new Response.Listener<NetworkResponse>() {
                     @Override
-                    public void onResponse(String response) {
+                    public void onResponse(NetworkResponse response) {
                         progress = new ProgressDialog(DiagnosisActivity.this);
                         progress.dismiss();
                         progressDialog.dismiss();
                         try {
                             //Toast.makeText(DiagnosisActivity.this, "Uploaded Successful", Toast.LENGTH_LONG).show();
-                            responseStr = response;
-
-                            JSONObject jsonObject = new JSONObject(responseStr);
+                            JSONObject jsonObject = new JSONObject(new String(response.data));
                             // JSON 데이터를 파싱하고 특정 키에 따라 변수에 저장
-                            String name = jsonObject.getString("code"); // 질병이름(숫자로나옴)
-                            String img = jsonObject.getString("img"); //이미지
+                            String name = jsonObject.getString("class_info"); // 질병이름(숫자로나옴)
+                            //String img = jsonObject.getString("img"); //이미지
+                            //String splitText = img.replace("b'","");
+                            //String splitText = img.substring(2, img.length()-2);
+
+                            String xmin = jsonObject.getString("xmin");
+                            String ymin = jsonObject.getString("ymin");
+                            String width = jsonObject.getString("width");
+                            String height = jsonObject.getString("height");
+
+                            String ter[] = {xmin, ymin, width, height};
+
+                            Log.i("t",xmin+ymin+width+height);
+
                             String acc = jsonObject.getString("acc"); //정확도
 
                             Intent intent1 = new Intent(DiagnosisActivity.this, ResultActivity.class);
                             intent1.putExtra("name", name);
-                            intent1.putExtra("img", img);
+                            //intent1.putExtra("img", splitText);
                             intent1.putExtra("acc", acc);
+                            intent1.putExtra("ter", ter);
+                            intent1.putExtra("bitmap", bitmap);
                             startActivity(intent1);
+
                             finish();
                         } catch (Exception e){
-                            Toast.makeText(DiagnosisActivity.this, "Some error occurred!", Toast.LENGTH_LONG).show();
+                            Toast.makeText(DiagnosisActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
                         }
                     }
+
                 },
                 new Response.ErrorListener() {
                     @Override
@@ -214,13 +244,14 @@ public class DiagnosisActivity extends AppCompatActivity {
                     }
                 }) {
             @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> params = new HashMap<>();
-                params.put("imgBase64", imageString);
-
+            protected Map<String, DataPart> getByteData() {
+                Map<String, DataPart> params = new HashMap<>();
+                long imagename = System.currentTimeMillis();
+                params.put("img", new DataPart(imagename + ".png", getFileDataFromDrawable(bitmap)));
                 return params;
             }
         };
+        //Volley.newRequestQueue(this).add(request);
 
         request.setRetryPolicy(new com.android.volley.DefaultRetryPolicy(
 
@@ -233,5 +264,23 @@ public class DiagnosisActivity extends AppCompatActivity {
         queue.add(request);
 
     }
+
+    private File bitmapToFile(Bitmap bitmap) {
+        File filesDir = getApplicationContext().getFilesDir();
+        File imageFile = new File(filesDir, "image.jpg");
+
+        OutputStream os;
+        try {
+            os = new FileOutputStream(imageFile);
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, os);
+            os.flush();
+            os.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return imageFile;
+    }
+
 
 }

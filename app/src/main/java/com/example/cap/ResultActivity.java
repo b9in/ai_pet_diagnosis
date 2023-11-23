@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
 import android.os.Bundle;
 import android.util.Base64;
 import android.view.MenuItem;
@@ -56,20 +57,20 @@ public class ResultActivity extends AppCompatActivity {
         imgR = findViewById(R.id.imgR);
 
         Intent intent = getIntent();
-        String imgValue = intent.getStringExtra("img");
         String nameValue = intent.getStringExtra("name");
         String accValue = intent.getStringExtra("acc");
-        Bitmap bitmap = null;
+        String ter[] = intent.getStringArrayExtra("ter");
+        Bitmap bitmap = (Bitmap) intent.getParcelableExtra("bitmap");
+        ResultImage customView = new ResultImage(this, nameValue, accValue, ter, bitmap);
 
-        try {
-            byte[] decodedString = Base64.decode(imgValue, Base64.DEFAULT);
-            bitmap = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        Bitmap customViewBitmap = Bitmap.createBitmap(
+                customView.getWidth(), customView.getHeight(), Bitmap.Config.ARGB_8888);
+        //Canvas canvas = new Canvas(customViewBitmap);
+        //customView.draw(canvas);
 
-        if (bitmap != null) {
-            imgR.setImageBitmap(bitmap);
+        if (customView != null) {
+            //imgR.setImageBitmap(bitmap);
+            imgR.setImageBitmap(customViewBitmap);
             txtTitle.setText(nameValue);
             txtContent.setText("정확도 : " + accValue);
 

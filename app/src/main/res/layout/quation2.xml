@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Q. 반려동물이 눈물을 심하게 흘립니다."
-        android:layout_marginLeft="30dp"
+        android:layout_marginHorizontal="30dp"
         android:layout_marginTop="30dp"
         android:textSize="18dp"
         android:fontFamily="@font/gmarket_sans_ttf_medium"/>
@@ -18,7 +18,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="A. 아토피성 결막염, 감염성 결막염, 각막염 등의 안과 질환이 있을 경우 눈물을 흘리는 증상을 보입니다."
-        android:layout_marginLeft="30dp"
+        android:layout_marginHorizontal="30dp"
         android:layout_marginTop="30dp"
         android:textSize="15dp"
         android:fontFamily="@font/gmarket_sans_ttf_light"/>
