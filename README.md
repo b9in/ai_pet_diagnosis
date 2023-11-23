@@ -29,13 +29,16 @@ profile 버튼을 누르면 홈 화면의 반려동물 이미지와 이름, 종(
 
 이미지를 업로드하고 SEND 버튼을 누르면 서버로 이미지가 전송되어 Yolo 모델 인공지능이 안구 질병을 판별합니다.
 
-<img src="https://github.com/b9in/ai_pet_diagnosis/assets/128045612/2a4b4067-4c0c-4dbd-94a8-c0fad1b1c3bf" width="300" height="600"/>
+volley 라이브러리를 사용하여 서버에 FormData형식으로 bitmap을 전송합니다.
+
+<img width="172" alt="스크린샷 2023-11-23 114810" src="https://github.com/b9in/ai_pet_diagnosis/assets/128045612/9f675017-7f32-4f37-83a2-f707016674d4">
 
 판별을 끝낸 인공지능이 결과 값을 안드로이드에 전송하여 결과를 표시합니다.
 
-가능성 높은 질환명과 질환 설명을 나타내고 주변 병원을 표시하는 맵 화면과 사전 화면으로 이동할 수 있는 버튼을 제공합니다.
+질환명과 영역을 나타내고 주변 병원을 표시하는 맵 화면과 사전 화면으로 이동할 수 있는 버튼을 제공합니다.
 
 <img src="https://github.com/b9in/ai_pet_diagnosis/assets/128045612/cf29a0bf-b41a-4586-a58f-bd0abf950b6c" width="300" height="110"/>
+
 
 #### 맵 화면
 
