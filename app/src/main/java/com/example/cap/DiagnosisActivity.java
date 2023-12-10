@@ -224,7 +224,7 @@ public class DiagnosisActivity extends AppCompatActivity {
                             //intent1.putExtra("img", splitText);
                             intent1.putExtra("acc", acc);
                             intent1.putExtra("ter", ter);
-                            intent1.putExtra("bitmap", bitmap);
+                            intent1.putExtra("image", imageBytes);
                             startActivity(intent1);
 
                             finish();
