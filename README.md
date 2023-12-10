@@ -19,6 +19,8 @@ AI 반려동물 안구 자가진단 안드로이드 어플리케이션
 
 반려동물 안구 자가진단 버튼을 통해 진단 페이지로 이동할 수 있습니다.
 
+<img width="167" alt="스크린샷 2023-11-23 130118" src="https://github.com/b9in/ai_pet_diagnosis/assets/128045612/3dae7269-a30a-40d3-a0c0-437f7c7ae263">
+
 profile 버튼을 누르면 홈 화면의 반려동물 이미지와 이름, 종(species)을 업데이트할 수 있습니다.
 
 회원 기능을 구현하지 않았기 때문에 SharedPreferences API를 이용하여 데이터를 저장합니다. 사용자가 앱을 삭제하지 않는 이상 데이터는 바뀌지 않습니다.
@@ -29,13 +31,17 @@ profile 버튼을 누르면 홈 화면의 반려동물 이미지와 이름, 종(
 
 이미지를 업로드하고 SEND 버튼을 누르면 서버로 이미지가 전송되어 Yolo 모델 인공지능이 안구 질병을 판별합니다.
 
-<img src="https://github.com/b9in/ai_pet_diagnosis/assets/128045612/2a4b4067-4c0c-4dbd-94a8-c0fad1b1c3bf" width="300" height="600"/>
+volley 라이브러리를 사용하여 서버에 FormData형식으로 bitmap을 전송합니다.
+
+<img width="172" alt="스크린샷 2023-11-23 114810" src="https://github.com/b9in/ai_pet_diagnosis/assets/128045612/9f675017-7f32-4f37-83a2-f707016674d4">
+<img width="172" alt="스크린샷 2023-11-23 125700" src="https://github.com/b9in/ai_pet_diagnosis/assets/128045612/15a00c6a-da26-45b2-b732-2f1a07db86b6">
 
 판별을 끝낸 인공지능이 결과 값을 안드로이드에 전송하여 결과를 표시합니다.
 
-가능성 높은 질환명과 질환 설명을 나타내고 주변 병원을 표시하는 맵 화면과 사전 화면으로 이동할 수 있는 버튼을 제공합니다.
+질환명과 영역을 나타내고 주변 병원을 표시하는 맵 화면과 사전 화면으로 이동할 수 있는 버튼을 제공합니다.
 
 <img src="https://github.com/b9in/ai_pet_diagnosis/assets/128045612/cf29a0bf-b41a-4586-a58f-bd0abf950b6c" width="300" height="110"/>
+
 
 #### 맵 화면
 
@@ -58,3 +64,5 @@ profile 버튼을 누르면 홈 화면의 반려동물 이미지와 이름, 종(
 ## 느낀 점
 
 어플리케이션 개발에 앞서 요구사항을 정의하고 어플리케이션 설계를 하여 훨씬 수월하게 개발할 수 있어 요구사항 정의와 설계의 중요성을 깨달았다. 안드로이드 UI를 설계하면서 UX의 중요성을 느끼고 편리한 화면 전환을 위해 NavigationBarView를 활용했다. 지도를 표시하는 부분에서 kakao maps api와 google places api 중에 어떤 것을 써야할 지 고민했는데 kakao maps api는 db에 동물병원 공공데이터를 내장하여 써야한다는 점 때문에 google maps, places api를 채택했다. 이번 팀 프로젝트를 통해 백엔드와 협업을 하면서 소통이 중요하다는 것을 깨달았다. 또, 백엔드에 대해서도 지식을 잘 갖춰놔야겠다고 생각했다.
+
+Base64를 통해 이미지를 인코딩하여 서버에 보내고 영역이 표시된 이미지를 다시 안드로이드로 받아오는 과정에서 시간이 오래 소요되어, Base64를 사용하던 방식에서 FormData방식으로 바꿨다. 또, 서버에서 이미지를 받지 않고 안드로이드에서 Canvas를 통해 영역을 표시하여 서버와의 데이터 교환 속도를 줄였다.
